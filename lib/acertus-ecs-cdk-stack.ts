@@ -56,7 +56,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
     */
         //New cluster creation
         const cluster = new ecs.Cluster(this, "MyCluster", {
-          vpc: vpc
+          vpc: adminvpc
         });
     
         // Create a load-balanced Fargate service and make it public
@@ -77,15 +77,15 @@ export class AcertusEcsCdkStack extends cdk.Stack {
     
         const fargatetaskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDef');
     
-        taskDefinition.addContainer('DefaultContainer', {
+        fargatetaskDefinition.addContainer('DefaultContainer', {
           image: ecs.ContainerImage.fromRegistry("${{ secrets.ECR_REGISTRY }}/${{ secrets.IMAGE_NAME }}"),
-          memoryLimitMiB: 512,
+          memoryLimitMiB: 512
         });
     
         // Instantiate an Amazon ECS Service
         const ecsService = new ecs.FargateService(this, 'Service', {
           cluster,
-          taskDefinition,
+          fargatetaskDefinition
         });
     */
   }
