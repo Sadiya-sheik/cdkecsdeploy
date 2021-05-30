@@ -86,7 +86,6 @@ export class AcertusEcsCdkStack extends cdk.Stack {
         const ecsService = new ecs.FargateService(this, 'Service', {
           cluster,
           fargatetaskDefinition
-        });
-    */
+        })
   }
 }
