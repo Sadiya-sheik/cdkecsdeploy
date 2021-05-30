@@ -8,7 +8,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 console.log("Importing customer data into DynamoDB. Please wait.");
 var customers = JSON.parse(
   fs.readFileSync(
-    "./customer-info.json",
+    "../customer-info.json",
     "utf8"
   )
 );
