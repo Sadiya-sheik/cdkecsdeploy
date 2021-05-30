@@ -85,7 +85,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
         // Instantiate an Amazon ECS Service
         const ecsService = new ecs.FargateService(this, 'Service', {
           cluster,
-          fargatetaskDefinition,
+          taskDefinition: fargatetaskDefinition,
         })
   }
 }
