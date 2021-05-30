@@ -9,7 +9,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
 
     // New VPC creation
     const adminvpc = new ec2.Vpc(this, "Acertus-Admin-Vpc", {
-      maxAzs: 1,
+      maxAzs: 2,
       cidr: "10.0.0.0/16",
       natGateways: 1,
       subnetConfiguration: [
@@ -53,7 +53,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
           targetRequestsPerSecond: 1
         }); 
         //Load balancer code ends
-    
+    */
         //New cluster creation
         const cluster = new ecs.Cluster(this, "MyCluster", {
           vpc: vpc
@@ -64,7 +64,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
           cluster: cluster, // Required
           cpu: 512, // Default is 256
           desiredCount: 6, // Default is 1
-          taskImageOptions: { image: ecs.ContainerImage.fromRegistry("amazon/amazon-ecs-sample") },
+          taskImageOptions: { image: ecs.ContainerImage.fromRegistry(${{ secrets.ECR_REGISTRY }}) },
           memoryLimitMiB: 2048, // Default is 512
           publicLoadBalancer: true // Default is false
         });
@@ -78,7 +78,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
         const fargatetaskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDef');
     
         taskDefinition.addContainer('DefaultContainer', {
-          image: ecs.ContainerImage.fromRegistry("850805969385.dkr.ecr.us-east-1.amazonaws.com/acertus-marketplace-notification"),
+          image: ecs.ContainerImage.fromRegistry("${{ secrets.ECR_REGISTRY }}/${{ secrets.IMAGE_NAME }}"),
           memoryLimitMiB: 512,
         });
     
