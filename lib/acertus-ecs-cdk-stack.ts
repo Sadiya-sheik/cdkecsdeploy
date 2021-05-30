@@ -56,14 +56,14 @@ export class AcertusEcsCdkStack extends cdk.Stack {
     */
         //New cluster creation
         const cluster = new ecs.Cluster(this, "MyCluster", {
-          vpc: adminvpc
+          vpc: adminvpc,
         });
     
         // Create a load-balanced Fargate service and make it public
         new ecs_patterns.ApplicationLoadBalancedFargateService(this, "MyFargateService", {
-          cluster: cluster, // Required
-          cpu: 512, // Default is 256
-          desiredCount: 6, // Default is 1
+          cluster: cluster,
+          cpu: 512,
+          desiredCount: 1, // Default is 1
           taskImageOptions: { image: ecs.ContainerImage.fromRegistry("665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui") },
           memoryLimitMiB: 2048, // Default is 512
           publicLoadBalancer: true // Default is false
@@ -72,20 +72,20 @@ export class AcertusEcsCdkStack extends cdk.Stack {
         // Add capacity to it
         cluster.addCapacity('DefaultAutoScalingGroupCapacity', {
           instanceType: new ec2.InstanceType("t2.small"),
-          desiredCapacity: 2
+          desiredCapacity: 2,
         });
     
         const fargatetaskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDef');
     
         fargatetaskDefinition.addContainer('DefaultContainer', {
           image: ecs.ContainerImage.fromRegistry("665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui:latest"),
-          memoryLimitMiB: 512
+          memoryLimitMiB: 512,
         });
     
         // Instantiate an Amazon ECS Service
         const ecsService = new ecs.FargateService(this, 'Service', {
           cluster,
-          fargatetaskDefinition
+          fargatetaskDefinition,
         })
   }
 }
