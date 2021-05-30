@@ -5,7 +5,7 @@ module.exports = {
     endpoint: "http://localhost:8000",
   },
   aws_remote_config: {
-    region: "us-east-1",
-    endpoint: "dynamodb.us-east-1.amazonaws.com",
+    region: "ap-south-1",
+    endpoint: "dynamodb.ap-south-1.amazonaws.com",
   },
 };
