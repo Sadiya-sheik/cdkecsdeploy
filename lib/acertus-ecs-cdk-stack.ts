@@ -64,21 +64,21 @@ export class AcertusEcsCdkStack extends cdk.Stack {
           cluster: cluster, // Required
           cpu: 512, // Default is 256
           desiredCount: 6, // Default is 1
-          taskImageOptions: { image: ecs.ContainerImage.fromRegistry(${{ secrets.ECR_REGISTRY }}) },
+          taskImageOptions: { image: ecs.ContainerImage.fromRegistry("665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui") },
           memoryLimitMiB: 2048, // Default is 512
           publicLoadBalancer: true // Default is false
         });
     
         // Add capacity to it
         cluster.addCapacity('DefaultAutoScalingGroupCapacity', {
-          instanceType: new ec2.InstanceType("t2.xlarge"),
-          desiredCapacity: 3,
+          instanceType: new ec2.InstanceType("t2.small"),
+          desiredCapacity: 2
         });
     
         const fargatetaskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDef');
     
         fargatetaskDefinition.addContainer('DefaultContainer', {
-          image: ecs.ContainerImage.fromRegistry("${{ secrets.ECR_REGISTRY }}/${{ secrets.IMAGE_NAME }}"),
+          image: ecs.ContainerImage.fromRegistry("665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui:latest"),
           memoryLimitMiB: 512
         });
     
