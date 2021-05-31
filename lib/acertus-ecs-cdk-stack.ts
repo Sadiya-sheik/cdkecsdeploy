@@ -86,7 +86,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
     const listener = lb.addListener("Listener", {
       open: true,
       port: 443,
-      certificates: routecertificate,
+      certificates: `${routecertificate}`
     });
 
     listener.addTargetGroups(`${clientPrefix}-tg`, {
