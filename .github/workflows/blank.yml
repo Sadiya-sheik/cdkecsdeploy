@@ -53,6 +53,6 @@ jobs:
           #npm install
           #node ./config/tables/create-customer-info-table.js
           #node ./config/tables/load-customer-info.js
-          #cdk synth
-          #cdk bootstrap
-          #cdk deploy AcertusEcsCdkStack ---require-approval never
+          cdk synth
+          cdk bootstrap
+          cdk deploy AcertusEcsCdkStack ---require-approval never
