@@ -50,7 +50,7 @@ jobs:
           #docker tag ${{secrets.ECR_IMAGE}}:latest ${{secrets.ECR_REGISTRY}}/${{secrets.ECR_IMAGE}}:latest
           #docker push ${{secrets.ECR_REGISTRY}}/${{secrets.ECR_IMAGE}}:latest
           #docker push ${{ format('{0}:{1}',secrets.ECR_REGISTRY,secrets.CONTAINER_TAG ) }}
-          #npm install
+          npm install
           #node ./config/tables/create-customer-info-table.js
           #node ./config/tables/load-customer-info.js
           cdk synth
