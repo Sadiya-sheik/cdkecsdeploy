@@ -45,6 +45,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
       vpc: adminvpc
     });
 
+    //ECR registry
     const repository = new ecr.Repository(this, `${clientPrefix}-repository`, {
       repositoryName: "665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui",
     });
