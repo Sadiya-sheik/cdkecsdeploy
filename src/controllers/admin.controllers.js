@@ -35,7 +35,7 @@ const getCustomer = async (search) => {
       "#id": "orderId",
     },
     ExpressionAttributeValues: {
-      ":order_id": search,
+      ":order_id": search.toUpperCase(),
     },
   };
   const customer = await docClient.scan(params).promise();
