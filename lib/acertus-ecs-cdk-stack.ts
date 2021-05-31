@@ -208,7 +208,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
 
 
     // Instantiate an Amazon ECS Service
-    
+    /*
 
     const service = new ecs.FargateService(this, `${clientPrefix}-service`, {
       cluster,
@@ -221,5 +221,6 @@ export class AcertusEcsCdkStack extends cdk.Stack {
     });
 
     service.attachToApplicationTargetGroup(targetGroupHttp);
+    */
   }
 }
