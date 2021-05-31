@@ -77,7 +77,6 @@ export class AcertusEcsCdkStack extends cdk.Stack {
     const lb = new elbv2.ApplicationLoadBalancer(this, `${clientPrefix}-elb`, {
       vpc: adminvpc,
       internetFacing: true,
-      targetGroupHttp,
       vpcSubnets: {
         subnets: adminvpc.publicSubnets
       }
