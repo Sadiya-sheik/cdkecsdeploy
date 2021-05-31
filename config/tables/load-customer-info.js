@@ -8,7 +8,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 console.log("Importing customer data into DynamoDB. Please wait.");
 var customers = JSON.parse(
   fs.readFileSync(
-    "C:\\Users\\sadiya.sheikh\\Admin-module\\AcertusAdminPortal\\config\\tables\\customer-info.json",
+    "/home/runner/work/cdkecsdeploy/cdkecsdeploy/config/tables/customer-info.json",
     "utf8"
   )
 );
