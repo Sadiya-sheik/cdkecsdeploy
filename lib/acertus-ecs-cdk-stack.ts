@@ -18,7 +18,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
     super(scope, id, props);
 
     const routecertificate = certificatemanager.Certificate.fromCertificateArn(this, "certificate", "arn:aws:acm:ap-south-1:665106695518:certificate/d55e09cc-f9e7-4b8e-9c69-0d85bcd24436");
-    const repository = "665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui1";
+    const repository = ecr.Repository.fromRepositoryArn(this, "repository", '665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui1');
     //const cloudfronturl = "arn:aws:cloudfront::850805969385:distribution/E3SXCGGDWS0B0P";
     const clientPrefix = "ADMINUI";
     // New VPC creation
