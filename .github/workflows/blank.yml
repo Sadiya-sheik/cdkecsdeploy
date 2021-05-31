@@ -42,10 +42,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          aws ecr get-login-password --region ${{secrets.AWS_REGION}} | docker login --username ${{secrets.AWS_USER}} --password-stdin ${{secrets.ECR_REGISTRY}}
-          docker build -t ${{secrets.IMAGE_NAME}} .
-          docker tag ${{secrets.IMAGE_NAME}}:${{secrets.CONTAINER_TAG}} ${{secrets.ECR_REGISTRY}}:${{secrets.CONTAINER_TAG}}
-          docker push ${{secrets.ECR_REGISTRY}}:${{secrets.CONTAINER_TAG}}
+          #aws ecr get-login-password --region ${{secrets.AWS_REGION}} | docker login --username ${{secrets.AWS_USER}} --password-stdin ${{secrets.ECR_REGISTRY}}
+          #docker build -t ${{secrets.IMAGE_NAME}} .
+          #docker tag ${{secrets.IMAGE_NAME}}:${{secrets.CONTAINER_TAG}} ${{secrets.ECR_REGISTRY}}:${{secrets.CONTAINER_TAG}}
+          #docker push ${{secrets.ECR_REGISTRY}}:${{secrets.CONTAINER_TAG}}
           #aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 850805969385.dkr.ecr.us-east-1.amazonaws.com
           #docker build -t acertus-marketplace-notification .
           #docker tag acertus-marketplace-notification:latest 850805969385.dkr.ecr.us-east-1.amazonaws.com/acertus-marketplace-notification:latest
