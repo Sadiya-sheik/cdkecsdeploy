@@ -44,9 +44,11 @@ jobs:
         run: |
           aws ecr get-login-password --region ${{secrets.AWS_REGION}} | docker login --username ${{secrets.AWS_USER}} --password-stdin ${{secrets.ECR_REGISTRY}}
           docker build -t ${{secrets.IMAGE_NAME}} .
+          docker tag adminui1:latest 665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui1:latest
+          docker push 665106695518.dkr.ecr.ap-south-1.amazonaws.com/adminui1:latest
           #docker tag ${{ format('{0}:{1} {2}/{3}:{4}',secrets.IMAGE_NAME,secrets.CONTAINER_TAG,secrets.ECR_REGISTRY,secrets.IMAGE_NAME,secrets.CONTAINER_TAG ) }}
-          docker tag ${{secrets.ECR_IMAGE}}:latest ${{secrets.ECR_REGISTRY}}/${{secrets.ECR_IMAGE}}:latest
-          docker push ${{secrets.ECR_REGISTRY}}/${{secrets.ECR_IMAGE}}:latest
+          #docker tag ${{secrets.ECR_IMAGE}}:latest ${{secrets.ECR_REGISTRY}}/${{secrets.ECR_IMAGE}}:latest
+          #docker push ${{secrets.ECR_REGISTRY}}/${{secrets.ECR_IMAGE}}:latest
           #docker push ${{ format('{0}:{1}',secrets.ECR_REGISTRY,secrets.CONTAINER_TAG ) }}
           npm install
           #node ./config/tables/create-customer-info-table.js
