@@ -17,7 +17,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    //const routecertificate = "arn:aws:acm:us-east-1:850805969385:certificate/24e545e9-fdeb-44d1-a0c6-7a13ecefa892";
+    const routecertificate = certificatemanager.Certificate.fromCertificateArn(this, "certificate", "arn:aws:acm:us-east-1:665106695518:certificate/99221ffa-abbb-4553-9150-b9c1724b0115");
     //const cloudfronturl = "arn:aws:cloudfront::850805969385:distribution/E3SXCGGDWS0B0P";
     const clientPrefix = "ADMINUI";
     // New VPC creation
@@ -86,7 +86,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
     const listener = lb.addListener("Listener", {
       open: true,
       port: 443,
-      //certificates: `${routecertificate}`
+      certificates: [routecertificate]
     });
 
     listener.addTargetGroups(`${clientPrefix}-tg`, {
