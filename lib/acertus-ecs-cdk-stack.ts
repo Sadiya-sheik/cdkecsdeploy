@@ -108,7 +108,7 @@ export class AcertusEcsCdkStack extends cdk.Stack {
 
     //S3 Code
     const bucket = new s3.Bucket(this, `${clientPrefix}-s3-bucket`, {
-      bucketName: `${clientPrefix}-assets`,
+      bucketName: "adminui-assets",
       publicReadAccess: true,
       websiteIndexDocument: 'index.html',
       removalPolicy: cdk.RemovalPolicy.DESTROY,
