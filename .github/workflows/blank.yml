@@ -54,5 +54,5 @@ jobs:
           #node ./config/tables/create-customer-info-table.js
           #node ./config/tables/load-customer-info.js
           cdk bootstrap
-          cdk destroy
+          cdk destroy ---require-approval never
           #cdk deploy AcertusEcsCdkStack ---require-approval never
